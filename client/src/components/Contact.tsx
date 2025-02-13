@@ -7,8 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -29,33 +27,25 @@ export default function Contact() {
     }
   });
 
-  const mutation = useMutation({
-    mutationFn: async (data: FormData) => {
-      const res = await apiRequest("POST", "/api/contact", data);
-      return res.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-      form.reset();
-    },
-    onError: () => {
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
-    },
-  });
-
   const onSubmit = (data: FormData) => {
-    mutation.mutate(data);
+    // For now, we'll use mailto until user confirms preferred method
+    const subject = encodeURIComponent("Portfolio Contact Form");
+    const body = encodeURIComponent(`
+      Name: ${data.name}
+      Email: ${data.email}
+      Message: ${data.message}
+    `);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+
+    toast({
+      title: "Message Ready!",
+      description: "Opening your email client to send the message.",
+    });
+    form.reset();
   };
 
   return (
-    <section id="contact" className="py-20 bg-[#F37D12]">
+    <section id="contact" className="py-20 bg-[#402014]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,11 +68,11 @@ export default function Contact() {
                     <FormControl>
                       <Input
                         placeholder="Your name"
-                        className="bg-white"
+                        className="bg-white/10 text-white placeholder:text-white/60 border-white/20"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-200" />
                   </FormItem>
                 )}
               />
@@ -97,11 +87,11 @@ export default function Contact() {
                       <Input
                         type="email"
                         placeholder="your.email@example.com"
-                        className="bg-white"
+                        className="bg-white/10 text-white placeholder:text-white/60 border-white/20"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-200" />
                   </FormItem>
                 )}
               />
@@ -115,21 +105,20 @@ export default function Contact() {
                     <FormControl>
                       <Textarea
                         placeholder="Your message"
-                        className="bg-white"
+                        className="bg-white/10 text-white placeholder:text-white/60 border-white/20"
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-red-200" />
                   </FormItem>
                 )}
               />
 
               <Button
                 type="submit"
-                className="w-full bg-white text-[#EB6424] hover:bg-white/90"
-                disabled={mutation.isPending}
+                className="w-full bg-[#0d0c00] hover:bg-[#440000] text-white"
               >
-                {mutation.isPending ? "Sending..." : "Send Message"}
+                Send Message
               </Button>
             </form>
           </Form>
