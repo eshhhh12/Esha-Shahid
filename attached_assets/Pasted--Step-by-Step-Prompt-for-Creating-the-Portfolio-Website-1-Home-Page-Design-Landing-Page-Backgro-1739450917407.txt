@@ -1,0 +1,71 @@
+
+Step-by-Step Prompt for Creating the Portfolio Website:
+1. Home Page Design (Landing Page):
+Background Animation: The landing page should have an animated background with a girl moving, which can be implemented using CSS animation or JavaScript. The animation will add a lively effect to the page and make the visitor's first impression engaging.
+
+Text and Message: On top of the animated background, place a welcoming text. Example:
+
+"Welcome to My Portfolio"
+"I’m Esha Shahid, a passionate web developer who creates interactive experiences."
+Color Scheme: Use the primary color #BABD8D (Light Olive Green) for the text to keep the design soft and clean.
+
+CTA Button (Call to Action): Below the welcome message, add a prominent Get Started button. The button should use the secondary color #FA9500 (Bright Orange) to stand out.
+
+2. Navigation Bar:
+Fixed Navigation Bar: At the top of the page, create a fixed navigation bar that stays visible as the user scrolls. The navbar should contain links to different sections of the page:
+Home
+About Me
+Projects
+Contact
+The background color of the navbar should be #FA9500 (Bright Orange), and the links should be in white or light text for contrast.
+3. About Me Section:
+Title: The section should start with a title, like "About Me." The title text should be in #EB6424 (Vibrant Coral) to create a visual hierarchy and match the branding.
+
+Content: Write a short, compelling introduction to yourself and your skills. You can include:
+
+Your experience in web development.
+The tools and technologies you use.
+A personal touch, like your passion for creating interactive designs.
+Ensure this section uses #BABD8D (Light Olive Green) for background or text to maintain consistency with the color palette.
+
+4. Projects Section:
+Project Showcase: In this section, showcase your key projects with short descriptions and images of the project. Example:
+Project 1: Virtual Wardrobe App (You can include a thumbnail image of the app or a mockup).
+Project 2: Celebrity Fan Club Website (Showcase a project image or a link to view the project).
+Each project box should have a background color of #BABD8D (Light Olive Green) and contain:
+The project title in #EB6424 (Vibrant Coral).
+A short project description or link to more details.
+Use hover effects (with CSS) to give interactivity, such as changing the background color to #FA9500 (Bright Orange) when the user hovers over the project box.
+5. Contact Section:
+Form for Contact Information: In the Contact Section, provide a form for users to reach out to you. The form will consist of:
+
+Name input field
+Email input field
+Message text area
+Submit button
+The form should be styled in a clean and modern way. Use #F37D12 (Warm Orange) for the form’s background color to give it a distinctive look.
+
+Form Submission: Once the form is filled, data will be stored in localStorage using JavaScript, so you can view submitted data on the user's device. The contact form should display a confirmation message after submission, like "Thank you for reaching out. Your information has been stored."
+
+6. Smooth Transitions and Animations:
+Page Transition: Each section of the website (Home, About, Projects, Contact) should have smooth transitions as the user scrolls or clicks the navigation bar links. This can be done with CSS transitions for a seamless user experience.
+
+Button Hover Effects: Buttons should have hover effects. For example, when the user hovers over the "Get Started" button, it can change color from #FA9500 (Bright Orange) to #EB6424 (Vibrant Coral).
+
+7. Footer Section:
+Footer Content: The footer should contain basic information, like:
+Your copyright notice (e.g., "© 2025 Esha Shahid").
+Links to your social media profiles (GitHub, LinkedIn, etc.).
+Any other relevant info (email address, blog link, etc.).
+Footer Styling: The footer background should use #EB6424 (Vibrant Coral), with text in white for good contrast.
+8. Responsive Design:
+Mobile-First Approach: Make sure the website is responsive, meaning it should look great on both desktops and mobile devices. For mobile screens, stack content vertically and ensure that the text is large enough to read.
+
+Navigation: For mobile devices, change the horizontal navigation menu into a vertical or hamburger menu (a three-bar icon that opens the navigation links when clicked).
+
+9. Data Storage:
+Contact Form Data: When users submit the form, store their information (name, email, and message) in localStorage on the browser. This way, even after page reload, the data is available for viewing.
+10. Testing:
+Test the site in different browsers (Chrome, Firefox, Safari, Edge) to ensure that everything looks consistent and works smoothly across them.
+
+Test Mobile View: Check that the design is responsive, ensuring it looks great on smartphones and tablets as wel
