@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -27,19 +29,29 @@ export default function Contact() {
     }
   });
 
+  const mutation = useMutation({
+    mutationFn: async (data: FormData) => {
+      const res = await apiRequest("POST", "/api/contact", data);
+      return res.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      form.reset();
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
   const onSubmit = (data: FormData) => {
-    // Store in localStorage
-    const submissions = JSON.parse(localStorage.getItem("contactSubmissions") || "[]");
-    submissions.push({ ...data, timestamp: new Date().toISOString() });
-    localStorage.setItem("contactSubmissions", JSON.stringify(submissions));
-
-    // Show success message
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. Your information has been stored.",
-    });
-
-    form.reset();
+    mutation.mutate(data);
   };
 
   return (
@@ -115,8 +127,9 @@ export default function Contact() {
               <Button
                 type="submit"
                 className="w-full bg-white text-[#EB6424] hover:bg-white/90"
+                disabled={mutation.isPending}
               >
-                Send Message
+                {mutation.isPending ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </Form>
