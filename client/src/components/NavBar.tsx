@@ -22,20 +22,20 @@ export default function NavBar() {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-[#FA9500] shadow-lg" : "bg-transparent"}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? "bg-[#400106] shadow-lg" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <span className="text-white font-bold text-xl">Esha Shahid</span>
           </div>
-          
+
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-4">
               {["Home", "About", "Projects", "Contact"].map((item) => (
                 <Button
                   key={item}
                   variant="ghost"
-                  className="text-white hover:bg-white/20"
+                  className="text-white hover:bg-[#402014]/20"
                   onClick={() => scrollTo(item.toLowerCase())}
                 >
                   {item}
@@ -57,13 +57,13 @@ export default function NavBar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-[#FA9500]">
+        <div className="md:hidden bg-[#400106]">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {["Home", "About", "Projects", "Contact"].map((item) => (
               <Button
                 key={item}
                 variant="ghost"
-                className="w-full text-white hover:bg-white/20 justify-start"
+                className="w-full text-white hover:bg-[#402014]/20 justify-start"
                 onClick={() => scrollTo(item.toLowerCase())}
               >
                 {item}
