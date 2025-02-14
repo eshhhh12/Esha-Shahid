@@ -56,10 +56,9 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // Use environment port or fallback to 8080 for deployment
-  const PORT = process.env.PORT || 8080;
+  // ALWAYS serve the app on port 5000
+  const PORT = 5000;
   server.listen(PORT, "0.0.0.0", () => {
     log(`Server running at http://0.0.0.0:${PORT}`);
-    log(`Environment: ${process.env.NODE_ENV || 'development'}`);
   });
 })();
